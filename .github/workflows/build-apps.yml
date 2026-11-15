@@ -23,7 +23,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
       - run: npm install
       - run: npm run build:win
       - uses: actions/upload-artifact@v4
@@ -47,6 +46,7 @@ jobs:
           java-version: '21'
       - uses: android-actions/setup-android@v3
       - run: npm install
+      - run: npm run copy:web
       - run: npx cap add android
       - run: npm run cap:sync
       - name: Build debug APK
