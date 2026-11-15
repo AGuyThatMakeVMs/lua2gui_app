@@ -1,0 +1,54 @@
+{
+  "name": "lua2gui-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lua 2 Gui desktop and Android app",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "copy:web": "node scripts/copy-web.mjs",
+    "start": "npm run copy:web && electron .",
+    "build:win": "npm run copy:web && electron-builder --win nsis --x64",
+    "cap:sync": "npm run copy:web && cap sync",
+    "android:debug": "npm run cap:sync && cd android && gradlew.bat assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/filesystem": "^7.1.4",
+    "@capacitor/share": "^7.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3",
+    "electron": "^35.7.5",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.lua2gui.desktop",
+    "productName": "Lua 2 Gui",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "www/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "artifactName": "Lua2Gui-Setup-${version}-${arch}.${ext}"
+  }
+}
