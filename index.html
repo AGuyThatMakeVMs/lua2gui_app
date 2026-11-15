@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Roblox UI Converter | Lua 2 Gui</title>
+<meta name="description" content="Convert supported Roblox Luau UI scripts into editable RBXMX models. Preview ScreenGui interfaces, check conversion warnings, and export for Roblox Studio.">
+<meta name="theme-color" content="#050b07">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://lua2gui.pages.dev/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=3" sizes="any">
+<link rel="apple-touch-icon" href="favicon.svg?v=3">
+<meta name="msapplication-TileColor" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lua 2 Gui">
+<meta property="og:title" content="Lua 2 Gui | Luau to Roblox UI Converter">
+<meta property="og:description" content="Preview Roblox UI code live and export .rbxmx models.">
+<meta property="og:url" content="https://lua2gui.pages.dev/">
+<meta property="og:image" content="https://lua2gui.pages.dev/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lua 2 Gui | Luau to Roblox UI Converter">
+<meta name="twitter:description" content="Convert supported Luau UI code into Roblox model files with a live preview.">
+<meta name="twitter:image" content="https://lua2gui.pages.dev/og-image.svg">
+<meta name="application-name" content="Lua 2 Gui">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Lua 2 Gui",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any device with a modern web browser",
+  "url": "https://lua2gui.pages.dev/",
+  "description": "A free browser-based Roblox UI converter for supported Luau scripts. Preview GUI instances and export editable RBXMX models for Roblox Studio.",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Convert supported Instance.new Roblox UI declarations",
+    "Preview supported ScreenGui, Frame, TextLabel and button elements",
+    "Export editable RBXMX model files",
+    "Open Lua and Luau source files",
+    "Show conversion warnings and object hierarchy"
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap">
+<link rel="preconnect" href="https://cdn-uicons.flaticon.com">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+<link rel="stylesheet" href="assets/css/app.css">
+
+</head>
+<body>
+<div class="app-shell">
+  <div class="mobile-topbar">
+    <button class="mobile-menu-button" id="sidebarToggle" type="button" aria-controls="appSidebar" aria-expanded="false" aria-label="Open navigation"><i class="fi fi-br-menu-burger" aria-hidden="true"></i><span>Lua 2 Gui</span></button>
+    <span class="mobile-topbar-meta">STUDIO</span>
+  </div>
+  <button class="sidebar-scrim" id="sidebarScrim" type="button" aria-label="Close navigation" tabindex="-1"></button>
+  <aside class="app-sidebar" id="appSidebar" aria-label="Main navigation">
+    <a class="sidebar-brand" href="#top" aria-label="Lua 2 Gui home"><span class="sidebar-brand-mark">L2G</span><span><b>Lua 2 Gui</b><small>CREATOR WORKSPACE</small></span></a>
+    <a class="sidebar-new" href="#converter"><i class="fi fi-br-plus" aria-hidden="true"></i><span>New conversion</span><kbd>↵</kbd></a>
+    <div class="sidebar-section-label">WORKSPACE</div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link active" href="#converter"><i class="fi fi-br-code" aria-hidden="true"></i><span>Converter</span></a>
+      <a class="sidebar-link" href="#libraryHub"><i class="fi fi-br-apps" aria-hidden="true"></i><span>UI Library Hub</span><span class="sidebar-count">6</span></a>
+      <a class="sidebar-link" href="#exportCenter"><i class="fi fi-br-file-export" aria-hidden="true"></i><span>Export center</span></a>
+      <a class="sidebar-link" href="#guide"><i class="fi fi-br-book-open-cover" aria-hidden="true"></i><span>Quick guide</span></a>
+    </nav>
+    <div class="sidebar-section-label sidebar-tools-label">MORE TOOLS</div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link" href="#previewTools"><i class="fi fi-br-sliders" aria-hidden="true"></i><span>Preview settings</span></a>
+      <a class="sidebar-link" href="#communityTitle"><i class="fi fi-br-comments" aria-hidden="true"></i><span>Community &amp; support</span></a>
+    </nav>
+    <div class="sidebar-spacer"></div>
+    <div class="sidebar-status"><span class="sidebar-status-dot"></span><span><b>Local workspace</b><small>No account required</small></span></div>
+    <a class="sidebar-credit" href="https://www.flaticon.com/uicons" target="_blank" rel="noopener noreferrer">Icons by Flaticon Uicons <i class="fi fi-br-arrow-up-right" aria-hidden="true"></i></a>
+  </aside>
+  <main class="workspace">
+<div class="wrap" id="top">
+<header>
+  <p class="sub">Turn Lua UI scripts into Roblox model files. Paste code, preview your interface live, and export it for Roblox Studio.</p>
+  <div class="chips"><span class="chip">Lua → GUI</span><span class="chip">Live preview</span><span class="chip">.rbxmx export</span><span class="chip">Auto ScreenGui</span><span class="chip">UI components</span></div>
+</header>
+
+<div class="studio-bar"><span class="studio-brand">LUA2GUI / STUDIO</span><span class="studio-meta"><span class="studio-dot"></span> Local preview · No code execution</span></div>
+
+<div class="grid" id="converter">
+  <section class="card editor-card">
+    <h2><i></i>Code editor</h2>
+    <textarea id="src" spellcheck="false" placeholder="Paste your Lua UI script here..."></textarea>
+    <div class="row">
+      <button class="btn main" id="go">Convert</button>
+      <button class="btn" id="ex">Load example</button>
+      <button class="btn" id="clr">Clear</button>
+      <label class="btn" for="file">Open .lua / .luau</label><input id="file" type="file" accept=".lua,.luau,.txt,text/plain" hidden>
+    </div>
+  </section>
+  <section class="card preview-card">
+    <h2><i></i>Visual workspace</h2>
+    <div class="preview-tools" id="previewTools">
+      <label>Device <select id="device"><option value="desktop">Desktop · 16:9</option><option value="phone">Phone · portrait</option><option value="tablet">Tablet</option></select></label>
+      <label>Zoom <input id="zoom" type="range" min="25" max="150" value="100"><output id="zoomValue">100%</output></label>
+      <button class="btn" id="fitBtn" type="button">Fit canvas</button>
+      <label class="view-check"><input type="checkbox" id="gridToggle" checked> Grid</label>
+      <label>Background <select id="canvasBg"><option value="checker">Checker</option><option value="dark">Dark</option><option value="light">Light</option></select></label>
+      <button class="btn" id="fullBtn" type="button">Fullscreen</button>
+    </div>
+    <div class="pv" id="pv"><div class="device-shell" id="deviceShell"><div class="stage" id="stage"></div></div></div>
+    <div class="preview-hint">Visual simulation · Select an element to inspect its properties. Luau runtime code is not executed.</div>
+    <div class="preview-workspace">
+      <section class="inspector-panel"><div class="panel-head">OBJECT HIERARCHY <span id="objectCount">0</span></div><div id="objectTree" class="object-tree"><div class="panel-empty">No objects yet</div></div></section>
+      <section class="inspector-panel"><div class="panel-head">PROPERTIES <span id="selectedClass">NONE</span></div><div id="inspector" class="inspector-content"><div class="panel-empty">Select an element in the canvas or hierarchy.</div></div></section>
+    </div>
+    <div class="stats"><div class="stat"><b id="s1">0</b><small>instances</small></div><div class="stat"><b id="s2">0</b><small>properties</small></div><div class="stat"><b id="s4">0</b><small>scripts</small></div><div class="stat"><b id="s3">0</b><small>warnings</small></div></div>
+    <div class="row"><pre id="tree" style="width:100%">—</pre></div>
+    <div class="warn" id="warn"></div>
+  </section>
+</div>
+
+
+<section class="library-hub" id="libraryHub" aria-labelledby="libraryTitle">
+  <div class="library-heading">
+    <div><p class="eyebrow">COMPONENT LIBRARY</p><h2 id="libraryTitle">UI Library Hub</h2><p>Ready-to-edit Roblox UI patterns. Search a component, preview its purpose, and insert its Luau starter code into the editor.</p></div>
+    <span class="library-count" id="libraryCount">6 components</span>
+  </div>
+  <div class="library-controls">
+    <label class="library-search"><span aria-hidden="true">⌕</span><input id="librarySearch" type="search" placeholder="Search components..." autocomplete="off" aria-label="Search UI components"></label>
+    <div class="library-filters" role="group" aria-label="Filter components">
+      <button class="library-filter active" type="button" data-filter="all">All</button>
+      <button class="library-filter" type="button" data-filter="panels">Panels</button>
+      <button class="library-filter" type="button" data-filter="controls">Controls</button>
+      <button class="library-filter" type="button" data-filter="feedback">Feedback</button>
+    </div>
+  </div>
+  <div class="library-grid" id="libraryGrid" aria-live="polite">
+    <div class="library-loading">Loading component collection...</div>
+  </div>
+  <p class="library-footnote">These are original starter templates, not bundled third-party frameworks. They use Roblox Instances and supported properties. Review and test every script in Roblox Studio.</p>
+</section>
+
+<section class="card out" id="exportCenter">
+  <h2><i></i>Export for Roblox Studio</h2>
+  <div class="row" style="margin-top:0">
+    <input class="name" id="fname" value="LuaGui" aria-label="File name" maxlength="40">
+    <label class="runtime-toggle"><input type="checkbox" id="includeRuntime"> Include original source as a LocalScript (auto-run when placed in a runnable location)</label>
+    <button class="btn beige" id="dzip" disabled>Download .zip</button>
+    <button class="btn" id="dtxt" disabled>Download .rbxmx</button>
+    <button class="btn" id="dlua" disabled>Download source .lua</button>
+    <button class="btn" id="cp" disabled>Copy XML</button>
+  </div>
+  <div id="msg"></div>
+  <textarea id="out" readonly spellcheck="false" style="margin-top:8px" placeholder="Your Roblox model XML will appear here."></textarea>
+</section>
+
+<div class="steps" id="guide">
+  <div class="step"><b>1</b><h3>Paste your script</h3><p>Use <code>Instance.new</code> and properties such as Size, Position, Color3, and Text. The preview updates as you type.</p></div>
+  <div class="step"><b>2</b><h3>Export your model</h3><p>Download the .rbxmx file directly, or get it inside a ZIP archive.</p></div>
+  <div class="step"><b>3</b><h3>Import into Studio</h3><p>In Roblox Studio, right-click <b>StarterGui</b>, choose <b>Insert from File</b>, and select your .rbxmx file.</p></div>
+</div>
+<div class="note">Lua 2 Gui reads <code>.lua</code> and <code>.luau</code> files, extracts supported GUI creation statements, and preserves the original source as an optional <code>LocalScript</code> in the exported model. The browser never executes your script. When imported into Roblox Studio, an included LocalScript can run, so only export and run code you trust. Dynamic UI, loops, functions, and event callbacks are preserved in the script but cannot be faithfully simulated by the static preview.</div>
+
+<section class="seo-content" aria-labelledby="about-lua2gui">
+  <h2 id="about-lua2gui">Free Roblox UI Converter for Roblox Studio</h2>
+  <p>Lua 2 Gui is a free, browser-based Roblox UI converter. It reads supported Lua and Luau interface code, builds a visual preview of recognized GUI objects, and exports an editable <code>.rbxmx</code> model that you can import into Roblox Studio. You can use it on a phone, tablet, or computer without installing a converter app.</p>
+
+  <h3>What can Lua 2 Gui convert?</h3>
+  <p>The converter is designed for common Roblox interface code that creates objects with <code>Instance.new()</code> and assigns supported properties. It recognizes interface elements such as <code>ScreenGui</code>, <code>Frame</code>, <code>TextLabel</code>, <code>TextButton</code>, <code>TextBox</code>, <code>ImageLabel</code>, and <code>ScrollingFrame</code>, as well as UI components such as <code>UICorner</code>, <code>UIStroke</code>, <code>UIListLayout</code>, <code>UIGridLayout</code>, and <code>UIPadding</code>.</p>
+  <ul>
+    <li>Paste code or open a <code>.lua</code> or <code>.luau</code> file.</li>
+    <li>Preview the supported interface and inspect the object hierarchy.</li>
+    <li>Review warnings when a statement or property is not supported by the static converter.</li>
+    <li>Download an <code>.rbxmx</code> model, a ZIP containing the model, or the original source file.</li>
+    <li>Check the layout in desktop, phone, and tablet preview modes.</li>
+  </ul>
+
+  <h3>How to use the Roblox GUI converter</h3>
+  <p>Paste a Roblox UI script into the Lua source box, or choose a local Lua/Luau file. Select <strong>Convert</strong> to build the preview and model. Review the warnings, choose a file name, and download the RBXMX file. In Roblox Studio, insert the exported model into your project and inspect it before publishing.</p>
+
+  <h3>What are the converter's limits?</h3>
+  <p>Lua 2 Gui is a static code converter, not a Roblox game runtime. It does not execute arbitrary Luau in the browser. Dynamic behavior such as loops, functions, event callbacks, and code that creates UI conditionally cannot be fully reproduced in the visual preview. The original source can be exported separately, and unsupported statements are reported where detected. Always review exported content in Roblox Studio.</p>
+
+  <h3>Frequently asked questions</h3>
+  <details>
+    <summary>Is Lua 2 Gui free?</summary>
+    <p>Yes. The browser converter is free to use and does not require an account.</p>
+  </details>
+  <details>
+    <summary>Does it work on mobile phones?</summary>
+    <p>Yes. The website layout adapts to mobile phones, tablets, and desktop browsers. Large or complex scripts may be easier to review on a larger screen.</p>
+  </details>
+  <details>
+    <summary>Does it run my Roblox script?</summary>
+    <p>No. The browser does not execute pasted Luau. It analyzes supported declarations to create a static preview and an RBXMX model.</p>
+  </details>
+  <details>
+    <summary>Can it convert every Roblox UI library?</summary>
+    <p>Not yet. The current converter focuses on direct Roblox instance creation and supported property assignments. Framework-specific syntax needs a dedicated parser or adapter.</p>
+  </details>
+  <details>
+    <summary>Where can I learn about Roblox interface objects?</summary>
+    <p>Read the <a href="https://create.roblox.com/docs/ui" target="_blank" rel="noopener noreferrer">official Roblox Creator Hub UI documentation</a> for ScreenGui, Frames, text objects, layouts, and interface behavior.</p>
+  </details>
+</section>
+
+<section class="community" aria-labelledby="communityTitle">
+  <div class="community-top">
+    <div>
+      <h2 id="communityTitle">Discord Community</h2>
+      <p class="community-intro">Need help with Lua2Gui or have an idea to improve it? Join the community to ask questions, report bugs, and suggest new features.</p>
+    </div>
+    <a class="btn main" href="https://discord.gg/hVEvfsyXZ5" target="_blank" rel="noopener noreferrer" aria-label="Join the Lua2Gui Discord community">Join Discord ↗</a>
+  </div>
+  <div class="community-grid">
+    <div class="community-item">
+      <b>Feature suggestions</b>
+      <p>Share ideas for new converter features, preview tools, and improvements.</p>
+    </div>
+    <div class="community-item">
+      <b>Help & support</b>
+      <p>Ask questions, report problems, and get help using Lua2Gui.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="studio-footer"><span>Lua 2 Gui · Built for Roblox creators</span><span>Studio workspace · Browser-based</span></footer>
+</div><!-- /.wrap -->
+  </main>
+</div><!-- /.app-shell -->
+
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/library.js" defer></script>
+</body>
+</html>
