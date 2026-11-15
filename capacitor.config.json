@@ -1,0 +1,12 @@
+{
+  "appId": "com.lua2gui.app",
+  "appName": "Lua 2 Gui",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    },
+    "Filesystem": {}
+  }
+}
